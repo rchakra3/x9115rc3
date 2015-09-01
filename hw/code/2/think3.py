@@ -1,11 +1,14 @@
-
-print "*******************************************************************"
-print "\t\t\tExercise 3 functions
-print "*******************************************************************\n\n"
-
-
 def print_twice(str):
     do_twice(print_string, str)
+
+
+def do_twice_orig(f):
+    f()
+    f()
+
+
+def print_spam():
+    print 'spam'
 
 
 def do_twice(f, *args):
@@ -49,7 +52,22 @@ def print_grid(rows, columns):
         print_one_seq(['+', '-'], ['/', ' '], columns)
     print_seq_line(['+', '-'], columns)
 
-print_grid(4, 4)
+
+def right_justify(str):
+    '''Function to right justify a string with a 70-col width'''
+    print str.rjust(70)
+
+
+def right_justify2(str):
+    '''Another Function to right justify a string with a 70-col width'''
+    print '{0:>{1}}'.format(str, 70)
+
+
+print "\n\n*******************************************************************"
+print "\t\t\tExercise 3.1"
+print "*******************************************************************\n"
+
+# repeat_lyrics()
 
 
 def repeat_lyrics():
@@ -62,13 +80,46 @@ def print_lyrics():
     right_justify2("I sleep all night and I work all day.")
 
 
-def right_justify(str):
-    '''Function to right justify a string with a 70-col width'''
-    print str.rjust(70)
-
-
-def right_justify2(str):
-    '''Another Function to right justify a string with a 70-col width'''
-    print '{0:>{1}}'.format(str, 70)
+print "\n\n*******************************************************************"
+print "\t\t\tExercise 3.2 and 3.3"
+print "*******************************************************************\n"
 
 repeat_lyrics()
+
+
+print "\n\n*******************************************************************"
+print "\t\t\tExercise 3.4 Part 1"
+print "*******************************************************************\n"
+
+do_twice_orig(print_spam)
+
+
+print "\n\n*******************************************************************"
+print "\t\t\tExercise 3.4 Part 2"
+print "*******************************************************************\n"
+
+do_twice(print_string, 'spam')
+
+
+print "\n\n*******************************************************************"
+print "\t\t\tExercise 3.4 Part 3"
+print "*******************************************************************\n"
+
+print_twice('spam')
+
+
+print "\n\n*******************************************************************"
+print "\t\t\tExercise 3.4 Part 4"
+print "*******************************************************************\n"
+
+do_twice(print_twice, 'spam')
+
+
+print "\n\n*******************************************************************"
+print "\t\t\tExercise 3.4 Part 5"
+print "*******************************************************************\n"
+
+do_four(print_string, 'spam')
+
+
+print "\n\n**********************************END******************************"

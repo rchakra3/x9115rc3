@@ -15,8 +15,24 @@ def draw_polygon(turtle_name, length, num_sides):
         fd(turtle_name, length)
         lt(turtle_name, degree)
 
+
+print "\n\n*******************************************************************"
+print "\t\t\tExercise 4.2"
+print "*******************************************************************\n"
+
 world = TurtleWorld()
 bob = Turtle()
-draw_polygon(bob, 50, 8)
 
+draw_square(bob, 100)
+wait_for_user()
+
+
+print "\n\n*******************************************************************"
+print "\t\t\tExercise 4.3"
+print "*******************************************************************\n"
+
+world = TurtleWorld()
+bob = Turtle()
+
+draw_polygon(bob, 50, 8)
 wait_for_user()
