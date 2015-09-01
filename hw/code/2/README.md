@@ -1,6 +1,7 @@
 # HW2
 
 ## Table of Contents
+  * [Run Instructions](#run-instructions)
   * [Exercise 3.1](#ex-3-1)
   * [Exercise 3.2](#ex-3-2)
   * [Exercise 3.3](#ex-3-3)
@@ -8,6 +9,40 @@
   * [Exercise 3.5](#ex-3-5)
   * [Exercise 4.2](#ex-4-2)
   * [Exercise 4.3](#ex-4-3)
+
+## Instructions <a id="run-instructions"></a>
+
+1. Install virtualenv if not already installed
+
+	```
+	sudo apt-get install virtualenv
+	```
+
+2. Create and source virtualenv, then install requirements:
+
+	```
+	virtualenv env
+	source env/bin/activate
+	pip install -r requirements
+	```
+
+3. Run think3.py:
+	
+	```
+	python think3.py
+	```
+
+4. Run think4.py:
+
+	```
+	python think4.py
+	```
+
+5. Deactivate virtualenv
+
+	```
+	deactivate
+	```
   
 ## Exercise 3.1 <a id="ex-3-1"></a>
 
