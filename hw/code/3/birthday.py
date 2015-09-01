@@ -3,7 +3,7 @@ from random import randint
 
 
 def has_duplicates(list):
-    '''Returns true if list has duplicates'''
+    """Returns true if list has duplicates"""
     unique_vals = Set()
     for val in list:
         if val in unique_vals:
@@ -31,8 +31,8 @@ def simulate(sample_size):
 
 
 def probability(num_of_sims, sample_size):
-    ''' Get the probability of same birthdays
-        Takes the sample_size and number of simulations to run as input'''
+    """ Get the probability of same birthdays
+        Takes the sample_size and number of simulations to run as input"""
     true_count = 0
 
     for i in range(num_of_sims):
@@ -41,5 +41,7 @@ def probability(num_of_sims, sample_size):
     return (float(true_count) / num_of_sims)
 
 
-# Run the simulation 10000 times on a sample size of 23
-print probability(10000, 23)
+if __name__ == '__main__':
+    # Run the simulation 10000 times on a sample size of 23
+    print 'Probability of 2 people having the same',
+    print 'birthday is %.2f%%' % (probability(10000, 23))
