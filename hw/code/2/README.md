@@ -81,9 +81,9 @@
 
 ## Exercise 4.2 <a id="ex-4-2"></a>
 
-![Exercise 4.2](screenshots/think4\_2.png)
+![Exercise 4.2](screenshots/think4%5C_2.png)
 
 
 ## Exercise 4.3 <a id="ex-4-3"></a>
 
-![Exercise 4.3](screenshots/think4\_3.png)
+![Exercise 4.3](screenshots/think4%5C_3.png)
