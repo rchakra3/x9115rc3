@@ -3,13 +3,13 @@
 
 ## ii. Keywords
 
-1. **Symbolic Execution:**
+1. **Symbolic Execution:** Symbolic Execution of code refers to assigning symbolic values to variables as some code is executed. The path condition or constraints that need to be satisfied are represented as a boolean expression. At each branch (eg: If else condition) in the code, one of the execution paths is followed. Typically, the aim of symbolic execution is to explore all such paths  fully in order to cover all possible inputs.
 
-2. **Java Path Finder:**
+2. **Symbolic Execution Tree:** The symbolic execution tree is an inherent component of symbolic execution. It is the tree representation of all the possible paths that can be taken while executing a particular piece of code.  
 
-3. **Symbolic Execution Tree:**
+3. **Java Path Finder:** JPF is an open-source toolkit for verifying Java bytecode. It enjoys a large library of extensions for adding or modifying functionality. The authors of this paper have overridden the default concrete execution with an extension that uses symbolic execution called Symbolic Path Finder (SPF) and another called ComplexCoverage, an extension which improves test coverage for complex structures in the code.
 
-4. **Test Obligation:** 
+4. **Test Obligation:** A test obligation is a single condition that MUST evaluate to true at some point during execution for a particular branch of the code to be executed. If all the test obligations have been satisfied when symbolic execution terminates, we can claim complete code coverage.
 
 
 ## iii. Artifacts
