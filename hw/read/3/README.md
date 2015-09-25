@@ -1,24 +1,23 @@
 # Paper Summary
-## i. Florian Gross, Gordon Fraser and Andreas Zeller. 2012. Search-Based System Testing:
-High Coverage, No False Alarms. In Proceedings of the 2012 International Symposium on Software Testing and Analysis.
+## i. Florian Gross, Gordon Fraser and Andreas Zeller. 2012. Search-Based System Testing: High Coverage, No False Alarms. In Proceedings of the 2012 International Symposium on Software Testing and Analysis.
 
 ## ii. Keywords
 
 
-    1. **System Testing:** System testing refers to testing a program/system in its entirety, hopefully in a manner that reproduces actual use cases for the program. This is in contrast to unit testing which focuses on testing a program by breaking it down into individual components and testing them separately. The disadvantage of unit testing is that the interactions between components will not be tested, and automating such testing can lead to test cases that are not possible when the components are connected and being used as whole.
+1. **System Testing:** System testing refers to testing a program/system in its entirety, hopefully in a manner that reproduces actual use cases for the program. This is in contrast to unit testing which focuses on testing a program by breaking it down into individual components and testing them separately. The disadvantage of unit testing is that the interactions between components will not be tested, and automating such testing can lead to test cases that are not possible when the components are connected and being used as whole.
 
-    2. **Oracle:** An Oracle is basically some program or set of truths that can accurately make decisions regarding the validity of certain results. For example, in the case of automated test execution, an Oracle could be used to verify that the successful executions were producing the outputs that were expected of the program being tested.
+2. **Oracle:** An Oracle is basically some program or set of truths that can accurately make decisions regarding the validity of certain results. For example, in the case of automated test execution, an Oracle could be used to verify that the successful executions were producing the outputs that were expected of the program being tested.
 
-    3. **Genetic Algorithm:** A genetic algorithm is a kind of evolutionary algorithm that is used to generate new generations of candidate solutions to a problem. The most generic template for a genetic algorithm is Mutation of input data, Crossover of the current 'population' and Selection of the best solutions for the next generation based on some fitness function. This process is then repeated until a pre-determined stop point. This point could be a maximum number of iterations, a certain threshold for suitability of a solution or some other measure. 
+3. **Genetic Algorithm:** A genetic algorithm is a kind of evolutionary algorithm that is used to generate new generations of candidate solutions to a problem. The most generic template for a genetic algorithm is Mutation of input data, Crossover of the current 'population' and Selection of the best solutions for the next generation based on some fitness function. This process is then repeated until a pre-determined stop point. This point could be a maximum number of iterations, a certain threshold for suitability of a solution or some other measure. 
 
-    4. **Test Coverage:** Test coverage refers to the number of lines of code or the percentage of the program that is being tested that is covered by test cases for it. Generally the greater the test coverage, the better.
+4. **Test Coverage:** Test coverage refers to the number of lines of code or the percentage of the program that is being tested that is covered by test cases for it. Generally the greater the test coverage, the better.
 
 
 ## iii. Artifacts
 
-    1. **Motivation:** Most test case generation techniques (at the time of this paper's publication) tended to operate on the unit level, running the risk of generating inputs that were infeasible. The inputs were infeasible because in an actual run of a program, certain paths are never taken because there is no way to reach them if execution is started from the beginning. Another problem they point out is the general lack of an "Oracle" to check the outputs of the executions performed by the test runs. 
-     
-    2. **Hypothesis:** The authors suggest generating test cases at the GUI level for programs where possible. Since they are generated at the GUI level, any generated test cases are guaranteed to be valid paths through the program in a real world execution. They also propose using a Genetic algorithm to learn program behavior and generate a list of test cases that achieves maximum possible coverage. Their hypothesis is that such system level testing which 'learns' the behavior corresponding to test events will result in more *efficient* testing due to there being no false alarms (i.e. Test failures along execution paths which would never occur when using the system as whole).
+1. **Motivation:** Most test case generation techniques (at the time of this paper's publication) tended to operate on the unit level, running the risk of generating inputs that were infeasible. The inputs were infeasible because in an actual run of a program, certain paths are never taken because there is no way to reach them if execution is started from the beginning. Another problem they point out is the general lack of an "Oracle" to check the outputs of the executions performed by the test runs. 
+ 
+2. **Hypothesis:** The authors suggest generating test cases at the GUI level for programs where possible. Since they are generated at the GUI level, any generated test cases are guaranteed to be valid paths through the program in a real world execution. They also propose using a Genetic algorithm to learn program behavior and generate a list of test cases that achieves maximum possible coverage. Their hypothesis is that such system level testing which 'learns' the behavior corresponding to test events will result in more *efficient* testing due to there being no false alarms (i.e. Test failures along execution paths which would never occur when using the system as whole).
 
 3. **Related Work:**
     
@@ -63,6 +62,6 @@ High Coverage, No False Alarms. In Proceedings of the 2012 International Symposi
 
 ## iv. Possible Improvements
 
-    1. All the unit testing tools should have been configured to generate a comparable number of statements per test instead of EvoSuite using 40 and Randoop using 100.
-    2. More complex programs should have been explored in greater detail. The authors claim there is no reason their system would not scale, yet one of the test programs do fail for reasons of complexity.
-    3. There should have been a comparison with a search or constraint based unit testing framework as well since such frameworks are also quite common in the automated testing field.
+1. All the unit testing tools should have been configured to generate a comparable number of statements per test instead of EvoSuite using 40 and Randoop using 100.
+2. More complex programs should have been explored in greater detail. The authors claim there is no reason their system would not scale, yet one of the test programs do fail for reasons of complexity.
+3. There should have been a comparison with a search or constraint based unit testing framework as well since such frameworks are also quite common in the automated testing field.
