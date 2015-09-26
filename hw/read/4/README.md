@@ -1,6 +1,5 @@
 # Paper Summary
-## i. Casper S. Jensen, Mukul R. Prasad and Anders Møller. 2013. Automated Testing with
-Targeted Event Sequence Generation. In Proceedings of the 2013 International Symposium on Software Testing and Analysis.
+## i. Casper S. Jensen, Mukul R. Prasad and Anders Møller. 2013. Automated Testing with Targeted Event Sequence Generation. In Proceedings of the 2013 International Symposium on Software Testing and Analysis.
 
 ## ii. Keywords
 
