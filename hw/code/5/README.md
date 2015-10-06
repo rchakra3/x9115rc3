@@ -8,4 +8,4 @@ python mws.py
 
 #### Sample Run:
 
-![Sample Run](img/sample_run.png)
+![Sample Run](img/sample_run2.png)
