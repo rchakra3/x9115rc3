@@ -58,13 +58,35 @@ def runner():
 
                     era0 = generate_random_population(model_instance, population_size_opt)
 
+                    modelid = "DTLZ5[10, 2] NO-OP"
                     hv_non_optimized = ga(model_instance, population_size=era_size, num_generations=1000, initial_pop = era0)
 
-                    # era0_opt = generate_random_population(model_instance, population_size_opt)
+                    flag = False
+                    for model_hvs in all_eras:
+                        if model_hvs[0] == model_id:
+                            model_hvs += [hv_non_optimized]
+                            flag = True
 
+                    if not flag:
+                        curr_model_hv = [model_id, hv_non_optimized]
+                        all_eras += [curr_model_hv]
+
+                    # era0_opt = generate_random_population(model_instance, population_size_opt)
+                    modelid = "DTLZ5[10, 2] OP"
                     hv_optimized = ga(model_instance, mp=mutation_prob_opt, cop=cross_over_points_opt, population_size=population_size_opt, num_generations=1000, initial_pop=era0)
 
+                    flag = False
+                    for model_hvs in all_eras:
+                        if model_hvs[0] == model_id:
+                            model_hvs += [hv_optimized]
+                            flag = True
+
+                    if not flag:
+                        curr_model_hv = [model_id, hv_optimized]
+                        all_eras += [curr_model_hv]
+
                     print "NonOptimized HV:" + str(hv_non_optimized)
+                    print best_can
                     print "Optimzed HV:" + str(hv_optimized)
                     # for optimizer in [ga]:  # , mws, de]:
 
