@@ -1,4 +1,4 @@
-## A simple standard Genetic Algorithm
+## Simple Genetic Algorithm
 
 ### Abstract
 This experiment tests the effectiveness of a particular implementation of a Genetic Algorithm on various DTLZ models.
@@ -157,7 +157,7 @@ I have used the Monte-Carlo method to calculate the hypervolume which relies on 
 Future work in this area can include improving the results for higher order DTLZ objective functions and also improving the efficiency of code. The results can possibly be improved by performing some preprocessing with a less intensive algorithm and generating a somehwhat optimal initial population instead of randomly generating the initial population. They might also be improved by tweaking the configurable properties of the GA, which is explored in the next experiment. Another possible improvement is experimenting with different type1 operators. Code efficiency can be improved by having the different runs execute in parallel instead of sequentially. At the start of every run an initial population is generated which is sent to all the optimizers, but there is no releation betwen the initial populations of different runs. This can be parallelized.
 
 ### Conclusion
-Genetic Algorithm is a promising algorithm in the class of Evolutionary Algorithms. It works well with existing fitness models and can accept a variety of decisions and objectives. It scales well for large number of candidates. The results of GA are easy to analyse and improve upon.
+Genetic Algorithms definitely perform better than other optimization techniques such as MaxWalkSat and Simulated Annealing. The results compared to an evolutionary algorithm like differental evolution are quite similar, at least for the runs on DTLZ7. Overall, given sufficient runs it seems to be able to find a good set of candidates for smaller number of objectives. The shortcomings explored in this are more due to the choice of the comparison function rather than GA itself. However, there is scope for improvement here in terms of tweaking the genetic algorithm itself, which I have attempted to explore in the next experiment. 
 
 ### References
 [1] https://en.wikipedia.org/wiki/Tournament_selection
