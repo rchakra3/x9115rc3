@@ -21,13 +21,8 @@ cop=> Defaults for number of crossover points: one point (i.e. pick a random dec
 select=> Defaults for select: for all pairs in the population, apply binary domination.
 population_size=> Defaults for number of candidates: 100
 num_generations=> Defaults for number of generations: 1000 (but have early termination considered every 100 generations)
-
-
-Binary Tournament Selection:
-Tournament Selection in Genetic algorithms refers to choosing k random elements of the current population and then returning the fittest element. 
-The winner of the tournament is selected as the parent for crossover. Binary Tournament selection is the specific case of k=2.
-
 """
+
 from __future__ import division
 import random
 # from common import prerun

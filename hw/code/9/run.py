@@ -53,25 +53,8 @@ def runner():
                         if not flag:
                             curr_model_hv = [model_id, hv]
                             all_eras += [curr_model_hv]
-                        # print "\n*****************************"
-                        # print optimizer.__name__ + "(" + model.__name__ + ")"
-                        # era_scores = [model_instance.aggregate(x) for x in last_era]
-                        # era_score = [0 for _ in range(len(last_era[0]))]
-                        # for can_num in range(len(era_score)):
-                        #     for obj_num in range(len(last_era)):
-                        #         # print obj_num, can_num
-                        #         era_score[can_num] += last_era[obj_num][can_num]
-                        #         # if(model.__name__ == "DTLZ7" and num_objs==2 and num_decs==10):
-                        #         #     # print last_era[obj_num][can_num]
-                        #         #     print len(last_era)
-
-                        # era_score.insert(0, model.__name__ + "[" + str(num_objs) + "," + str(num_decs)+"]")
-                        # print era_score
-                        # all_eras.append(era_score)
-                        # print "*****************************\n"
-                # print "Done for obj:" + str(num_objs)
-                # print all_eras
         print "Iteration " + str(num) + " done!"
+
     rdivDemo(all_eras)
     with open('output_hv.txt', 'w') as f:
         for model in all_eras:
