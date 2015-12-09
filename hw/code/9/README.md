@@ -114,22 +114,22 @@ Now for the actual runs:
 
 ##### DTLZ1
 
-![img/DTLZ1.png]
+![DTLZ1](img/DTLZ1.png)
 
 
 ##### DTLZ3
 
-![img/DTLZ3.png]
+![DTLZ3](img/DTLZ3.png)
 
 
 ##### DTLZ5
 
-![img/DTLZ5.png]
+![DTLZ5](img/DTLZ5.png)
 
 
 ##### DTLZ7
 
-![img/DTLZ7.png]
+![DTLZ7](img/DTLZ7.png)
 
 
 - There is very marked correlation between the number of objectives in a model and the quality of results generated

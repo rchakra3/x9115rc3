@@ -12,3 +12,11 @@ Objectives: [0.30062999999999995]
 Optimzed HV:0.69843
 runner function took 5236665.877 ms
 ```
+
+```
+NonOptimized HV:0.41458
+Decs: [0.5096189187278738, 2.68523636865567, 108.14187023373984]
+Objectives: [0.5309900000000001]
+Optimzed HV:0.40026
+runner function took 6025563.660 ms
+```
