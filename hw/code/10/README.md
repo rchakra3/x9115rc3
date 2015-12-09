@@ -131,7 +131,6 @@ However, despite the fact that other models performed much better with 2 objecti
 - Generate an initial population
 - Run GA on this initial population with the default parameters mentioned above
 - Run GA on the **same** initial population with the output of DE mentioned above as the parameters
-
 - This result was then contrasted with the results of a non-optimized GA. The results are below
 
 
@@ -139,21 +138,21 @@ However, despite the fact that other models performed much better with 2 objecti
 
 #### Tuned Vs Untuned Raw count
 
-[Tuned vs Untuned](img/pie.png)
+![Tuned vs Untuned](img/pie.png)
 
 The Tuned GA gets a more optimal solution most of the time.
 
 
 #### Tuned vs Untuned performance over different population sizes
 
-[Pop vs Performance](img/direct_comparison.png)
+![Pop vs Performance](img/direct_comparison.png)
 
 The Tuned GA performed consistently better than the untuned GA except in one case where the results were almost comparable.
 
 
 #### Variation of Optimized Mutation Probability and Number of Cross Over points
 
-[Mutation and CrossOver](img/mutAndCross.png)
+![Mutation and CrossOver](img/mutAndCross.png)
 
 It is interesting to note that as the size of the population increases, the mutation probability tends to increase.
 
