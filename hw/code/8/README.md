@@ -54,7 +54,7 @@ In order to do this I've used three comparators:
 
 
 - Type 2 comparator
-   - Used to compare eras of the same optimzer. I have used A12 for this and used 0.56 as the cutoff value. This basically means that there is improvement if the values of the objectives in the new era are better at least 56% of the time.
+   - Used to compare eras of the same optimzer. I have used A12 for this and used 0.56 as the cutoff value which is described as a 'Small' change [2][3]. This basically means that there is improvement if the values of the objectives in the new era are better at least 56% of the time.
    - If there is no improvement, number of lives is decreased by 1
    - If there is improvement, number of lives is increased by 5
 
@@ -161,3 +161,5 @@ Despite starting from the same initial populations, it is quite clear that Diffe
 ### References
 
 [1] https://cran.r-project.org/web/packages/ScottKnott/ScottKnott.pdf
+[2] https://gist.github.com/timm/5622240
+[3] A. Vargha and H. D. Delaney. A critique and improvement of the CL common language effect size statistics of McGraw and Wong. Journal of Educational and Behavioral Statistics; 25(2):101-132, 2000
