@@ -16,30 +16,26 @@ class Kursawe(Model):
         self.decs.append(dec)
         dec = Decision('x3', -5, 5)
         self.decs.append(dec)
-        dec = Decision('x4', -5, 5)
-        self.decs.append(dec)
-        dec = Decision('x5', -5, 5)
-        self.decs.append(dec)
 
     def f1(self, candidate):
         vec = candidate.dec_vals
         n = len(vec)
         sum = 0
 
-        for i in range(1, n + 1):
-            sum += (vec[i - 1] - 1 / (math.sqrt(n))) ** 2
+        for i in range(n - 1):
+            sum += (-10 * math.exp(-0.2 * math.sqrt(vec[i] ** 2 + vec[i + 1] ** 2)))
 
-        return 1 - math.exp(-sum)
+        return sum
 
     def f2(self, candidate):
         vec = candidate.dec_vals
         n = len(vec)
         sum = 0
 
-        for i in range(1, n + 1):
-            sum += (vec[i - 1] + 1 / (math.sqrt(n))) ** 2
+        for i in range(n):
+            sum += (abs(vec[i]) ** 0.8 + 5 * math.sin(vec[i]))
 
-        return 1 - math.exp(-sum)
+        return sum
 
     def objectives(self):
         return [self.f1, self.f2]

@@ -9,6 +9,8 @@ def mws(model, p=0.5, threshold=0.001, max_tries=500, max_changes=10, era_size=1
 
     best_can = None
 
+    max_tries = max_tries / max_changes
+
     normalize = prerun(model)
     aggregate = model.aggregate
 
@@ -21,39 +23,79 @@ def mws(model, p=0.5, threshold=0.001, max_tries=500, max_changes=10, era_size=1
     def type1(can1, can2):
         return (n_score(can1) < n_score(can2))
 
+    # def type2(era1, era2):
+    #     # a12 returns times that lst1 is greater than lst2
+    #     total = 0
+    #     n = 0
+    #     for obj_scores1, obj_scores2 in zip(era1, era2):
+    #         # If this is 1, that means new one is worse
+    #         total += a12(obj_scores1, obj_scores2)
+    #         n += 1
+    #     return (total / n >= 0.5)
     def type2(era1, era2):
         # a12 returns times that lst1 is greater than lst2
-        print len(era1)
-        total = 0
-        n = 0
-        for obj_scores1, obj_scores2 in zip(era1, era2):
-            # If this is 1, that means new one is worse
-            total += a12(obj_scores1, obj_scores2)
-            n += 1
-        return (total / n >= 0.5)
+        # total = 0
+        # n = 0
+        # for obj_scores1, obj_scores2 in zip(era1, era2):
+        #     # If this is 1, that means era1 is greater more often
+        #     # If minimizing, this means era1 is worse
+        #     total += a12(obj_scores1, obj_scores2)
+        #     n += 1
+        # return (total / n >= 0.5)
 
-    best_score = 1.0
+        # Currently returns true if even one of the objectives have improved
+        # print "here:" + str(len(era2))
+        # print "*****#############*************"
+        for index, objective in enumerate(era2):
+            # print "comparing:\n" + str(era1[index])
+            # print "and\n"
+            # print str(objective)
+            # print "******"
+            a12_score = a12(era1[index], objective)
+            # print "######"
+            # print a12_score
+            # print "######"
+            if (a12_score >= 0.56):
+                # print "######"
+                # print objective
+                # print era1[index]
+                # print a12_score
+                # print "######"
+                return True
+        # print "######"
+        # print a12_score
+        # print "######"
+        return False
+
+    # best_score = 1.0
 
     if not era0:
-        curr_era = []
+        print "ERRRRRRRRRRRRRRRRRRRRRRRRRRRROR"
+        curr_era = [[] for _ in model.objectives()]
         curr_lives = lives
 
     else:
         # List of List. Need to deepcopy internal list too
-        curr_era = []
-        era0_copy = list(era0)
+        curr_lives = lives
+        era0_copy = []
+        for can in era0:
+            new_can = Candidate(dec_vals=can.dec_vals, scores=can.scores)
+            era0_copy += [new_can]
+        curr_era = [[] for _ in model.objectives()]
         for can in era0_copy:
-            curr_era += []
             model.eval(can)
             obj_scores = [x for x in can.scores]
-            curr_era += [obj_scores]
+            for index, score in enumerate(obj_scores):
+                curr_era[index] += [score]
 
         best_can = era0_copy[0]
+        best_score = n_score(best_can)
         for can in era0_copy:
-            can_score = n_score(can)
-            if can_score < n_score(best_can):
+            if type1(can, best_can):
                 best_can = can
-                best_score = can_score
+                best_score = n_score(best_can)
+        # curr_can = era0_copy[len(era0_copy) - 1]
+        # curr_score = n_score(curr_can)
 
     # This stores a list of era entries, i.e a list of  [list of objective scores for every candidate in the era]
     # Assume one era is 5 candidates
@@ -76,7 +118,8 @@ def mws(model, p=0.5, threshold=0.001, max_tries=500, max_changes=10, era_size=1
         if i == max_tries:
             if curr_era:
                 eras += [curr_era]
-                curr_era = []
+                # curr_era = [[] for _ in model.objectives()]
+            # print "Reached max tries"
             out += ["\nReached Max Tries"]
             break
 
@@ -84,16 +127,18 @@ def mws(model, p=0.5, threshold=0.001, max_tries=500, max_changes=10, era_size=1
             out += ["\n" + str(best_score) + " "]
             if curr_era:
                 eras += [curr_era]
-                print len(curr_era)
-                curr_era = []
+                # print len(curr_era[0])
+                curr_era = [[] for _ in model.objectives()]
                 if len(eras) > 1:
+                    # print str(i)+":"+str(i*max_changes)+":lives", curr_lives
                     last_index = len(eras) - 1
                     # If there is improvement reset lives, else decrement
                     if (type2(eras[last_index - 1], eras[last_index])):
-                        curr_lives = lives
+                        curr_lives += lives
                     else:
                         curr_lives -= 1
                         if curr_lives == 0:
+                            print "No more"
                             out += ["\nNo more Lives"]
                             break
 
@@ -111,7 +156,8 @@ def mws(model, p=0.5, threshold=0.001, max_tries=500, max_changes=10, era_size=1
             out += ["."]
             model.eval(prev_candidate)
             obj_scores = [x for x in prev_candidate.scores]
-            curr_era += [obj_scores]
+            for index, score in enumerate(obj_scores):
+                curr_era[index] += [score]
             continue
 
         if best_can is None:
@@ -121,23 +167,25 @@ def mws(model, p=0.5, threshold=0.001, max_tries=500, max_changes=10, era_size=1
         for j in range(0, max_changes):
             model.eval(candidate)
             score = n_score(candidate)
+            # print score
 
             model.eval(candidate)
             obj_scores = [x for x in candidate.scores]
-            curr_era += [obj_scores]
+            for index, score in enumerate(obj_scores):
+                curr_era[index] += [score]
 
-            if score < best_score:
+            if type1(candidate, best_can):  # score < best_score:
                 out += ["!"]
                 best_can = candidate
                 best_score = score
 
-            if best_score < threshold:
-                if curr_era:
-                    eras += [curr_era]
-                    curr_era = []
-                out += ["\nScore satisfies threshold"]
-                thresh_flag = True
-                break
+            # if best_score < threshold:
+            #     if curr_era:
+            #         eras += [curr_era]
+            #         curr_era = [[] for _ in model.objectives()]
+            #     out += ["\nScore satisfies threshold"]
+            #     thresh_flag = True
+            #     break
 
             # choose a random decision
             c = random.randrange(0, len(model.decs))
@@ -159,7 +207,7 @@ def mws(model, p=0.5, threshold=0.001, max_tries=500, max_changes=10, era_size=1
 
             else:
                 orig_score = n_score(candidate)
-                candidate = mws_optimize(model, candidate, c)
+                candidate = mws_optimize(model, candidate, c, type1)
                 new_score = normalize(model.aggregate(candidate))
                 if orig_score != new_score:
                     out += ["+"]
@@ -167,15 +215,15 @@ def mws(model, p=0.5, threshold=0.001, max_tries=500, max_changes=10, era_size=1
                     out += ["."]
 
     # print ''.join(out)
-    print "\niterations:" + str(max_changes * i + j)
-    print "Best Score:" + str(normalize(model.aggregate(best_can)))
+    # print "\niterations:" + str(max_changes * i + j)
+    # print "Best Score:" + str(normalize(model.aggregate(best_can)))
 
-    print eras[len(eras)-1]
+    # print eras[len(eras)-1]
 
-    return best_can, model.aggregate(best_can)
+    return best_can, model.aggregate(best_can), eras[len(eras) - 1]
 
 
-def mws_optimize(model, candidate, dec_index, tries=50):
+def mws_optimize(model, candidate, dec_index, type1, tries=50):
 
     best_can = candidate
     model.eval(best_can)
@@ -191,7 +239,7 @@ def mws_optimize(model, candidate, dec_index, tries=50):
         score = model.aggregate(new_can)
 
         # We want to lower score
-        if score < best_score:
+        if type1(new_can, best_can):
             best_score = score
             best_can = new_can
 

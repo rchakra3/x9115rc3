@@ -44,3 +44,10 @@ class Model(object):
                     can.dec_vals[i] = prev_can.dec_vals[i]
             if self.ok(can):
                 return can
+
+    def aggregate(self, candidate):
+        aggr = 0
+        self.eval(candidate)
+        for score in candidate.scores:
+            aggr += score
+        return aggr
