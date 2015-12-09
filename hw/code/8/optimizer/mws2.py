@@ -138,7 +138,7 @@ def mws(model, p=0.5, threshold=0.001, max_tries=500, max_changes=10, era_size=1
                     else:
                         curr_lives -= 1
                         if curr_lives == 0:
-                            print "No more"
+                            # print "No more"
                             out += ["\nNo more Lives"]
                             break
 
