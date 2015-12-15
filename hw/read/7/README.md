@@ -50,7 +50,7 @@
 
     - Considering the next couple of results, I felt these were the most striking in terms of proving the author's point about the number of test cases that are actually relevant to a program's functionaliy. EvoSuite, a unit testing framework on which the author's Exsyst tool is built generated more than 30X the number of tests that the system level testing tool generated.
 
-    ![Failing Tests](img/results-tests_gen.png)
+    ![Failing Tests](img/results-fail_tests.png)
 
     - These results also reinforce the author's hypothesis that testing at the system level with GUI testing frameworks does not lead to false alarms. In fact, certain bugs were not found by the unit testing frameworks (despite a high number of false alarms) whereas the author's system level framework did find them.
 
