@@ -1,12 +1,12 @@
 # Review: Developments in Automated Test Generation Techniques
 
-  * [Abstract](#abstract)
-  * [Introduction](#introduction)
-  * [Approaches and State of Research](#approaches)
-  * [Progression of Research [2008 - 2014]](#progression)
-  * [Results](#results)
-  * [Conclusion](#conclusion)
-  * [References](#references)
+  1. [Abstract](#abstract)
+  2. [Introduction](#introduction)
+  3. [Approaches and State of Research](#approaches)
+  4. [Progression of Research [2008 - 2014]](#progression)
+  5. [Results](#results)
+  6. [Conclusion](#conclusion)
+  7. [References](#references)
 
 ## 1. Abstract <a id="abstract"></a>
 
